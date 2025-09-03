@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Splunk RUM Injector</title>
+  <link rel="stylesheet" href="src/popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Splunk RUM Injector</h1>
+      <div class="status-badge" id="statusBadge">
+        <span class="status-dot"></span>
+        <span class="status-text">Active</span>
+      </div>
+    </header>
+
+    <main>
+      <!-- Enable/Disable Toggle -->
+      <div class="toggle-section">
+        <label class="toggle">
+          <input type="checkbox" id="enableToggle">
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label">Enable RUM Injection</span>
+      </div>
+
+      <!-- Current Domain Status -->
+      <div class="domain-status">
+        <h3>Current Page</h3>
+        <div class="domain-info">
+          <span id="currentDomain">-</span>
+          <span class="injection-status" id="injectionStatus">Not injected</span>
+        </div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="stats-section">
+        <h3>Statistics</h3>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-value" id="eventCount">0</span>
+            <span class="stat-label">Events Tracked</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" id="lastEvent">Never</span>
+            <span class="stat-label">Last Event</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Config Status -->
+      <div class="config-status">
+        <h3>Configuration</h3>
+        <div class="config-item">
+          <span class="config-label">Realm:</span>
+          <span class="config-value" id="realmValue">Not configured</span>
+        </div>
+        <div class="config-item">
+          <span class="config-label">App Name:</span>
+          <span class="config-value" id="appNameValue">Not configured</span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="actions">
+        <button id="optionsBtn" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M12 1v6m0 6v6m4.22-13.22l4.24 4.24M1.54 1.54l4.24 4.24M20.46 20.46l-4.24-4.24M1.54 20.46l4.24-4.24"></path>
+          </svg>
+          Settings
+        </button>
+        <button id="refreshBtn" class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+          </svg>
+          Refresh
+        </button>
+      </div>
+    </main>
+  </div>
+  <script src="src/popup.js"></script>
+</body>
+</html>

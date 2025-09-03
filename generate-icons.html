@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generate Icons</title>
+</head>
+<body>
+  <h1>Icon Generator for Splunk RUM Extension</h1>
+  <p>Right-click each canvas and save as PNG file with the corresponding name:</p>
+  
+  <div>
+    <h3>icon16.png</h3>
+    <canvas id="icon16" width="16" height="16"></canvas>
+  </div>
+  
+  <div>
+    <h3>icon32.png</h3>
+    <canvas id="icon32" width="32" height="32"></canvas>
+  </div>
+  
+  <div>
+    <h3>icon48.png</h3>
+    <canvas id="icon48" width="48" height="48"></canvas>
+  </div>
+  
+  <div>
+    <h3>icon128.png</h3>
+    <canvas id="icon128" width="128" height="128"></canvas>
+  </div>
+
+  <script>
+    function drawIcon(canvas, size) {
+      const ctx = canvas.getContext('2d');
+      
+      // Create gradient
+      const gradient = ctx.createLinearGradient(0, 0, size, size);
+      gradient.addColorStop(0, '#667eea');
+      gradient.addColorStop(1, '#764ba2');
+      
+      // Draw rounded rectangle background
+      ctx.fillStyle = gradient;
+      const radius = size * 0.125;
+      ctx.beginPath();
+      ctx.moveTo(radius, 0);
+      ctx.lineTo(size - radius, 0);
+      ctx.quadraticCurveTo(size, 0, size, radius);
+      ctx.lineTo(size, size - radius);
+      ctx.quadraticCurveTo(size, size, size - radius, size);
+      ctx.lineTo(radius, size);
+      ctx.quadraticCurveTo(0, size, 0, size - radius);
+      ctx.lineTo(0, radius);
+      ctx.quadraticCurveTo(0, 0, radius, 0);
+      ctx.closePath();
+      ctx.fill();
+      
+      // Draw center circle
+      ctx.fillStyle = 'white';
+      ctx.beginPath();
+      ctx.arc(size/2, size/2, size * 0.0625, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Draw radiating circles
+      ctx.strokeStyle = 'white';
+      ctx.lineWidth = Math.max(1, size * 0.023);
+      ctx.globalAlpha = 0.8;
+      ctx.beginPath();
+      ctx.arc(size/2, size/2, size * 0.156, 0, Math.PI * 2);
+      ctx.stroke();
+      
+      ctx.lineWidth = Math.max(1, size * 0.016);
+      ctx.globalAlpha = 0.6;
+      ctx.beginPath();
+      ctx.arc(size/2, size/2, size * 0.25, 0, Math.PI * 2);
+      ctx.stroke();
+      
+      ctx.lineWidth = Math.max(1, size * 0.012);
+      ctx.globalAlpha = 0.4;
+      ctx.beginPath();
+      ctx.arc(size/2, size/2, size * 0.344, 0, Math.PI * 2);
+      ctx.stroke();
+      
+      // Reset alpha
+      ctx.globalAlpha = 1;
+    }
+    
+    // Generate all icons
+    drawIcon(document.getElementById('icon16'), 16);
+    drawIcon(document.getElementById('icon32'), 32);
+    drawIcon(document.getElementById('icon48'), 48);
+    drawIcon(document.getElementById('icon128'), 128);
+    
+    // Auto-download function
+    function downloadCanvas(canvas, filename) {
+      canvas.toBlob(function(blob) {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+    }
+    
+    // Add download buttons
+    document.querySelectorAll('canvas').forEach(canvas => {
+      const button = document.createElement('button');
+      button.textContent = 'Download';
+      button.style.display = 'block';
+      button.style.marginTop = '10px';
+      button.onclick = () => downloadCanvas(canvas, canvas.id + '.png');
+      canvas.parentElement.appendChild(button);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="16" fill="url(#grad)"/>
+  <g transform="translate(64, 64)">
+    <!-- Central circle -->
+    <circle cx="0" cy="0" r="8" fill="white"/>
+    <!-- Radiating waves -->
+    <circle cx="0" cy="0" r="20" fill="none" stroke="white" stroke-width="3" opacity="0.8"/>
+    <circle cx="0" cy="0" r="32" fill="none" stroke="white" stroke-width="2" opacity="0.6"/>
+    <circle cx="0" cy="0" r="44" fill="none" stroke="white" stroke-width="1.5" opacity="0.4"/>
+    <!-- Connection points -->
+    <circle cx="-30" cy="-30" r="4" fill="white" opacity="0.9"/>
+    <circle cx="30" cy="-30" r="4" fill="white" opacity="0.9"/>
+    <circle cx="-30" cy="30" r="4" fill="white" opacity="0.9"/>
+    <circle cx="30" cy="30" r="4" fill="white" opacity="0.9"/>
+    <!-- Connecting lines -->
+    <line x1="-30" y1="-30" x2="-8" y2="-8" stroke="white" stroke-width="2" opacity="0.5"/>
+    <line x1="30" y1="-30" x2="8" y2="-8" stroke="white" stroke-width="2" opacity="0.5"/>
+    <line x1="-30" y1="30" x2="-8" y2="8" stroke="white" stroke-width="2" opacity="0.5"/>
+    <line x1="30" y1="30" x2="8" y2="8" stroke="white" stroke-width="2" opacity="0.5"/>
+  </g>
+</svg>

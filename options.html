@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Splunk RUM Injector - Settings</title>
+  <link rel="stylesheet" href="src/options.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Splunk RUM Injector Settings</h1>
+      <p>Configure your Splunk RUM integration and domain rules</p>
+    </header>
+
+    <main>
+      <!-- Splunk Configuration -->
+      <section class="config-section">
+        <h2>Splunk Configuration</h2>
+        <div class="form-group">
+          <label for="realm">
+            Splunk Realm <span class="required">*</span>
+            <span class="hint">e.g., us0, us1, eu0</span>
+          </label>
+          <input type="text" id="realm" placeholder="us1" required>
+        </div>
+
+        <div class="form-group">
+          <label for="rumAccessToken">
+            RUM Access Token <span class="required">*</span>
+            <span class="hint">Your Splunk O11y RUM token</span>
+          </label>
+          <input type="password" id="rumAccessToken" placeholder="Enter your RUM access token" required>
+          <button type="button" class="toggle-visibility" id="toggleToken">Show</button>
+        </div>
+
+        <div class="form-group">
+          <label for="applicationName">
+            Application Name
+            <span class="hint">Name to identify your application in Splunk</span>
+          </label>
+          <input type="text" id="applicationName" placeholder="monitored-app">
+        </div>
+
+        <div class="form-group">
+          <label for="environment">
+            Environment
+            <span class="hint">e.g., production, staging, development</span>
+          </label>
+          <input type="text" id="environment" placeholder="production">
+        </div>
+      </section>
+
+      <!-- Domain Rules -->
+      <section class="config-section">
+        <h2>Domain Rules</h2>
+        
+        <div class="domain-mode">
+          <label class="radio-group">
+            <input type="radio" name="domainMode" value="blacklist" id="blacklistMode" checked>
+            <span>Blacklist Mode</span>
+            <span class="mode-description">Inject on all sites except those listed</span>
+          </label>
+          <label class="radio-group">
+            <input type="radio" name="domainMode" value="whitelist" id="whitelistMode">
+            <span>Whitelist Mode</span>
+            <span class="mode-description">Only inject on sites explicitly listed</span>
+          </label>
+        </div>
+
+        <div class="domain-list" id="blacklistSection">
+          <h3>Blacklisted Domains</h3>
+          <div class="domain-input-group">
+            <input type="text" id="blacklistInput" placeholder="example.com or *.example.com">
+            <button type="button" id="addBlacklist" class="btn-add">Add</button>
+          </div>
+          <ul id="blacklistDomains" class="domain-list-items"></ul>
+        </div>
+
+        <div class="domain-list" id="whitelistSection" style="display: none;">
+          <h3>Whitelisted Domains</h3>
+          <div class="domain-input-group">
+            <input type="text" id="whitelistInput" placeholder="example.com or *.example.com">
+            <button type="button" id="addWhitelist" class="btn-add">Add</button>
+          </div>
+          <ul id="whitelistDomains" class="domain-list-items"></ul>
+        </div>
+
+        <p class="info-text">
+          <strong>Tip:</strong> Use wildcards (*) to match subdomains. Example: *.example.com
+        </p>
+      </section>
+
+      <!-- Actions -->
+      <div class="actions">
+        <button type="button" id="saveBtn" class="btn btn-primary">Save Settings</button>
+        <button type="button" id="resetBtn" class="btn btn-secondary">Reset to Defaults</button>
+        <button type="button" id="exportBtn" class="btn btn-secondary">Export Config</button>
+        <button type="button" id="importBtn" class="btn btn-secondary">Import Config</button>
+        <input type="file" id="importFile" accept=".json" style="display: none;">
+      </div>
+
+      <!-- Status Messages -->
+      <div id="statusMessage" class="status-message"></div>
+    </main>
+  </div>
+  <script src="src/options.js"></script>
+</body>
+</html>
