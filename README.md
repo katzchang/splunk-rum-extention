@@ -16,9 +16,10 @@ Chrome拡張機能を使用して、任意のウェブサイトにSplunk RUM（R
 - 📤 **設定の管理** - 設定のエクスポート/インポート機能
 - 🛡️ **CSP対応** - Content Security Policyの制限下でも動作（v1.0.6以降）
 
-## 🌟 最新バージョン: v1.0.7
+## 🌟 最新バージョン: v1.0.8
 
 ### 更新履歴
+- **v1.0.8** - README整備、Gitリポジトリ初期化
 - **v1.0.7** - Session Recorder初期化の改善
 - **v1.0.6** - CSPエラーの完全解決
 - **v1.0.5** - Session Replay機能の追加
@@ -37,7 +38,7 @@ Chrome拡張機能を使用して、任意のウェブサイトにSplunk RUM（R
 
 #### 1. リポジトリのクローン/ダウンロード
 ```bash
-git clone https://github.com/your-repo/splunk-rum-extension.git
+git clone https://github.com/katzchang/splunk-rum-extension.git
 cd splunk-rum-extension
 ```
 

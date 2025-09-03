@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Splunk RUM Injector",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Inject Splunk RUM agent into any website for monitoring",
   "permissions": [
     "storage",
